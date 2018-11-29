@@ -29,6 +29,8 @@ func (c *Coordinator) Init(cfg cfg.Config) {
 func (c *Coordinator) Run() {
 	quit := make(chan bool)
 	go func() {
+		// perform it once and then use the ticker
+		c.update()
 		for {
 			select {
 			case <-c.ticker.C:
